@@ -13,23 +13,17 @@
         android:theme="@style/Theme.TianguisApp"
         tools:targetApi="31">
         <activity
-            android:name=".view.MainActivity2"
-            android:exported="false"
-            android:theme="@style/Theme.TianguisApp" />
-        <activity
             android:name=".view.OnboardingActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/Theme.TianguisApp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.MainActivity"
             android:exported="true">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
