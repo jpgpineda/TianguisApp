@@ -3,34 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/signInFragment2">
 
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.tianguisapp.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_blankFragment"
-            app:destination="@id/blankFragment" />
-    </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.tianguisapp.SecondFragment"
+        android:name="com.example.tianguisapp.view.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_signInFragment2"
+            app:destination="@id/signInFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.tianguisapp.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        android:id="@+id/signInFragment2"
+        android:name="com.example.tianguisapp.view.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment2_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
 </navigation>

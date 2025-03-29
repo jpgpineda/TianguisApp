@@ -8,31 +8,40 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import com.example.tianguisapp.databinding.FragmentFirstBinding
+import androidx.navigation.fragment.findNavController
+import com.example.tianguisapp.R
+import com.example.tianguisapp.databinding.SignInFragmentBinding
 import com.example.tianguisapp.model.SignInViewModel
+import com.example.tianguisapp.utils.FragmentCommunicator
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class SignInFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: SignInFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<SignInViewModel>()
     var isValid: Boolean = false
+    private lateinit var communicator: FragmentCommunicator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = SignInFragmentBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as OnboardingActivity
         setupView()
         return binding.root
 
     }
 
     private fun setupView() {
+        binding.registerTextView.setOnClickListener {
+            communicator.showLoader(true)
+            findNavController().navigate(R.id.action_signInFragment2_to_SecondFragment)
+        }
         binding.loginButton.setOnClickListener {
             if (isValid) {
                 requestLogin()

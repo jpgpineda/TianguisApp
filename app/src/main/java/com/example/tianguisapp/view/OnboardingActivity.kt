@@ -1,16 +1,17 @@
 package com.example.tianguisapp.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.example.tianguisapp.R
 import com.example.tianguisapp.databinding.ActivityOnboardingBinding
+import com.example.tianguisapp.utils.FragmentCommunicator
 
-class OnboardingActivity : AppCompatActivity() {
+class OnboardingActivity : AppCompatActivity(), FragmentCommunicator {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityOnboardingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,9 +22,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_onboarding)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+    override fun showLoader(value: Boolean) {
+        binding.loaderContainerView.visibility = if (value) View.VISIBLE else View.GONE
     }
 }

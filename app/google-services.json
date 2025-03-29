@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "143960349723",
+    "project_id": "tianguisapp-ef03e",
+    "storage_bucket": "tianguisapp-ef03e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143960349723:android:2940af05883b28eab96cbe",
+        "android_client_info": {
+          "package_name": "com.example.tianguisapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX9r2PO6-lZx4oa8TDzR2XTLiV1pylvok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

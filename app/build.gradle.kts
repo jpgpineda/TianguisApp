@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.services.plugin)
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.example.tianguisapp"
         minSdk = 30
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -51,4 +52,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.lottie)
+    // Firebase
+    implementation(platform(libs.firebase))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+
 }
