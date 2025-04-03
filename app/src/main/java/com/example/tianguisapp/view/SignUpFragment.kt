@@ -36,6 +36,10 @@ class SignUpFragment : Fragment() {
     }
 
     private fun setupView() {
+        binding.registerButton.setOnClickListener {
+            viewModel.requestSignUp(binding.emailTiet.text.toString(),
+                binding.passwordTiet.text.toString())
+        }
         setupObservers()
     }
 

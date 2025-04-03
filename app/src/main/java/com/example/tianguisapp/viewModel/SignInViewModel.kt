@@ -9,21 +9,24 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class SignUpViewModel: ViewModel() {
+class SignInViewModel: ViewModel() {
     private val _loaderState = MutableLiveData<Boolean>()
     val loaderState: LiveData<Boolean>
         get() = _loaderState
+    private val _sessionValid = MutableLiveData<Boolean>()
+    val sessionValid: LiveData<Boolean>
+        get() = _sessionValid
     private val firebase = FirebaseAuth.getInstance()
 
-    fun requestSignUp(email: String, password: String) {
+    fun requestSignIn(email: String, password: String) {
         _loaderState.value = true
         viewModelScope.launch {
-            val result = firebase.createUserWithEmailAndPassword(email, password).await()
+            val result = firebase.signInWithEmailAndPassword(email, password).await()
             _loaderState.value = false
             result.user?.let {
-                Log.i("Firebase", "SE puedo crear el usuario")
+                _sessionValid.value = true
             } ?: run {
-                Log.e("Firebase", "Ocurrio un problema")
+                Log.i("Firebase", "Ocurrio un problema")
             }
         }
     }
