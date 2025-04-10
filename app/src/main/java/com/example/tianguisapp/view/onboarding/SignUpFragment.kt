@@ -1,4 +1,4 @@
-package com.example.tianguisapp.view
+package com.example.tianguisapp.view.onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.tianguisapp.databinding.FragmentSecondBinding
+import com.example.tianguisapp.databinding.SignUpFragmentBinding
 import com.example.tianguisapp.utils.FragmentCommunicator
 import com.example.tianguisapp.viewModel.SignUpViewModel
 
@@ -15,7 +15,7 @@ import com.example.tianguisapp.viewModel.SignUpViewModel
  */
 class SignUpFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: SignUpFragmentBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -28,7 +28,7 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = SignUpFragmentBinding.inflate(inflater, container, false)
         communicator = requireActivity() as OnboardingActivity
         setupView()
         return binding.root

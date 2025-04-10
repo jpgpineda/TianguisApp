@@ -13,17 +13,18 @@
         android:theme="@style/Theme.TianguisApp"
         tools:targetApi="31">
         <activity
-            android:name=".view.OnboardingActivity"
+            android:name=".view.home.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TianguisApp" />
+        <activity
+            android:name=".view.onboarding.OnboardingActivity"
             android:exported="true"
             android:theme="@style/Theme.TianguisApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".view.MainActivity"
-            android:exported="false">
         </activity>
     </application>
 

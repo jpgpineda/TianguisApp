@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.tianguisapp.view.SignUpFragment"
+        android:name="com.example.tianguisapp.view.onboarding.SignUpFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/sign_up_fragment">
         <action
             android:id="@+id/action_SecondFragment_to_signInFragment2"
             app:destination="@id/signInFragment2" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment2"
-        android:name="com.example.tianguisapp.view.SignInFragment"
+        android:name="com.example.tianguisapp.view.onboarding.SignInFragment"
         android:label="SignInFragment" >
         <action
             android:id="@+id/action_signInFragment2_to_SecondFragment"

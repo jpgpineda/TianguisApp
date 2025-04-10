@@ -1,4 +1,4 @@
-package com.example.tianguisapp.view
+package com.example.tianguisapp.view.onboarding
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +14,7 @@ import com.example.tianguisapp.R
 import com.example.tianguisapp.databinding.SignInFragmentBinding
 import com.example.tianguisapp.viewModel.SignInViewModel
 import com.example.tianguisapp.utils.FragmentCommunicator
+import com.example.tianguisapp.view.home.HomeActivity
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -74,7 +75,7 @@ class SignInFragment : Fragment() {
         }
         viewModel.sessionValid.observe(viewLifecycleOwner) { validSession ->
             if (validSession) {
-                val intent = Intent(activity, MainActivity::class.java)
+                val intent = Intent(activity, HomeActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
             } else {

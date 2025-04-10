@@ -1,12 +1,8 @@
-package com.example.tianguisapp.view
+package com.example.tianguisapp.view.onboarding
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import com.example.tianguisapp.R
 import com.example.tianguisapp.databinding.ActivityOnboardingBinding
 import com.example.tianguisapp.utils.FragmentCommunicator
 
