@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.tianguisapp.databinding.ProductDetailFragmentBinding
+import com.example.tianguisapp.model.Product
+import com.example.tianguisapp.utils.FragmentCommunicator
+import com.example.tianguisapp.viewModel.SignInViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -17,6 +21,8 @@ class ProductDetailFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val viewModel by viewModels<ProductDetailViewModel>()
+    private lateinit var communicator: FragmentCommunicator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +30,30 @@ class ProductDetailFragment : Fragment() {
     ): View {
 
         _binding = ProductDetailFragmentBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as HomeActivity
+        setupView()
         return binding.root
+    }
 
+    fun setupView() {
+        viewModel.getProductDetail()
+        setupObservers()
+    }
+
+    fun setupObservers() {
+        viewModel.productInfo.observe(viewLifecycleOwner) { product ->
+            showProductInfo(product)
+        }
+        viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->
+            communicator.showLoader(loaderState)
+        }
+    }
+
+    fun showProductInfo(product: Product) {
+        binding.titleTextView.text = product.title
+        binding.priceTextView.text = product.price.toString()
+        binding.descriptionTextView.text = product.description
+        binding.categoryTextView.text = product.category
     }
 
     override fun onDestroyView() {
