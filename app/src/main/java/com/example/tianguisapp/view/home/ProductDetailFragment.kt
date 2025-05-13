@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.tianguisapp.databinding.ProductDetailFragmentBinding
 import com.example.tianguisapp.model.Product
 import com.example.tianguisapp.utils.FragmentCommunicator
-import com.example.tianguisapp.viewModel.SignInViewModel
+import com.example.tianguisapp.view.home.viewModel.ProductDetailViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.

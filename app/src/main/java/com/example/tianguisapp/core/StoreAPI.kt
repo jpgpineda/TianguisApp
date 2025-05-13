@@ -7,4 +7,7 @@ import retrofit2.http.GET
 interface StoreAPI {
     @GET("products/1")
     suspend fun getProductDetail():Response<Product>
+
+    @GET("products")
+    suspend fun fetchAllProducts(): Response<List<Product>>
 }

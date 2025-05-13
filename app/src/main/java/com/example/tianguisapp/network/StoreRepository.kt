@@ -14,4 +14,11 @@ class StoreRepository {
 
         return response.body()
     }
+
+    suspend fun fetchAllProducts(): List<Product>? {
+        val response = retrofit.fetchAllProducts()
+        Log.i("Response", response.body().toString())
+
+        return response.body()
+    }
 }
