@@ -7,14 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import android.Manifest
+import android.content.pm.PackageManager
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.lifecycleScope
 import com.example.tianguisapp.R
+import com.example.tianguisapp.core.LocationProvider
 import com.example.tianguisapp.databinding.SignInFragmentBinding
 import com.example.tianguisapp.viewModel.SignInViewModel
 import com.example.tianguisapp.utils.FragmentCommunicator
 import com.example.tianguisapp.view.home.HomeActivity
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -26,7 +34,20 @@ class SignInFragment : Fragment() {
     private val viewModel by viewModels<SignInViewModel>()
     var isValid: Boolean = false
     private lateinit var communicator: FragmentCommunicator
+private val requestPermissionLauncher = registerForActivityResult(
+    ActivityResultContracts.RequestMultiplePermissions()
+) { permissions ->
+    val fineLocationGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true
+    val coarseLocationGranted = permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true
 
+    if (fineLocationGranted || coarseLocationGranted) {
+        // ✅ Permiso concedido, puedes obtener la ubicación
+        getUserLocation()
+    } else {
+        // ❌ Permiso denegado
+        Toast.makeText(requireContext(), "Permiso de ubicación denegado", Toast.LENGTH_SHORT).show()
+    }
+}
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +62,12 @@ class SignInFragment : Fragment() {
     }
 
     private fun setupView() {
+        requestPermissionLauncher.launch(
+            arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+        )
         binding.registerTextView.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment2_to_SecondFragment)
         }
@@ -65,6 +92,19 @@ class SignInFragment : Fragment() {
                 isValid = false
             } else {
                 isValid = true
+            }
+        }
+    }
+
+    fun getUserLocation() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            lifecycleScope.launch {
+                val location = LocationProvider.getInstance(requireContext()).getCurrentLocation()
+                location?.let {
+                    Log.i("LOCATION", "Location: ${it.latitude} , ${it.longitude}")
+                } ?: run {
+                    Log.e("LOCATION", "ALGO SALIO MAL CON LA LOCACION")
+                }
             }
         }
     }

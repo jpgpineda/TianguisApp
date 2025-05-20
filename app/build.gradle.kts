@@ -64,4 +64,8 @@ dependencies {
 
     // Glide
     implementation(libs.glide)
+
+    // Location
+    implementation(libs.location)
+    implementation(libs.coroutines.play)
 }
