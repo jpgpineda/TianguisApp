@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tianguisapp.core.ResultWrapper
 import com.example.tianguisapp.model.Product
 import com.example.tianguisapp.network.StoreRepository
 import kotlinx.coroutines.launch
@@ -21,12 +22,15 @@ class ProductsViewModel: ViewModel() {
     fun fetchAllProducts() {
         _loaderState.value = true
         viewModelScope.launch {
-            val response = repository.fetchAllProducts()
-            _loaderState.value = false
-            response?.let {
-                _productInfo.value = it
-            } ?: run {
-                Log.e("API ERROR", "NO SE PUDO COMPLETAR LA PETICION")
+            when (val result = repository.fetchAllProducts()) {
+                is ResultWrapper.Success -> {
+                    _loaderState.value = false
+                    _productInfo.value = result.data
+                }
+                is ResultWrapper.Error -> {
+                    _loaderState.value = false
+                    val errorMessage = result.exception.message
+                }
             }
         }
     }
