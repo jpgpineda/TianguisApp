@@ -11,7 +11,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.tianguisapp.R
 import com.example.tianguisapp.databinding.ActivityHomeBinding
 import com.example.tianguisapp.utils.FragmentCommunicator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services.plugin)
     alias(libs.plugins.safeargs)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt")
 }
 
 android {
@@ -69,4 +71,8 @@ dependencies {
     // Location
     implementation(libs.location)
     implementation(libs.coroutines.play)
+
+    // Dagger hilt
+    implementation(libs.hilt)
+    implementation(libs.hilt.compiler)
 }

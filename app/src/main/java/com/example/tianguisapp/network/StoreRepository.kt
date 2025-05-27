@@ -7,12 +7,15 @@ import com.example.tianguisapp.core.StoreAPI
 import com.example.tianguisapp.core.safeCall
 import com.example.tianguisapp.model.Product
 import retrofit2.HttpException
+import retrofit2.Retrofit
+import javax.inject.Inject
 
-class StoreRepository {
-    private val retrofit = RetrofitInstance.getRetrofit().create(StoreAPI::class.java)
+class StoreRepository @Inject constructor(
+    private val storeAPI: StoreAPI
+) {
 
     suspend fun getProductDetail(id: String): ResultWrapper<Product> = safeCall {
-        val response = retrofit.getProductDetail(id)
+        val response = storeAPI.getProductDetail(id)
         Log.i("RESPONSE", response.body().toString())
         if (response.isSuccessful) {
             response.body() ?: throw Exception("Datos nulos")
@@ -22,7 +25,7 @@ class StoreRepository {
     }
 
     suspend fun fetchAllProducts(): ResultWrapper<List<Product>> = safeCall {
-        val response = retrofit.fetchAllProducts()
+        val response = storeAPI.fetchAllProducts()
         Log.i("Response", response.body().toString())
         if (response.isSuccessful) {
             response.body() ?: throw Exception("Datos nulos")

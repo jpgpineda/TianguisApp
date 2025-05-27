@@ -13,10 +13,12 @@ import com.example.tianguisapp.model.Product
 import com.example.tianguisapp.utils.FragmentCommunicator
 import com.example.tianguisapp.view.home.adapters.ProductAdapter
 import com.example.tianguisapp.view.home.viewModel.ProductsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class ProductsFragment : Fragment() {
 
     private var _binding: ProductsFragmentBinding? = null
