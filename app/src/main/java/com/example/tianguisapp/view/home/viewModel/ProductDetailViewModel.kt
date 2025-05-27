@@ -19,10 +19,10 @@ class ProductDetailViewModel: ViewModel() {
     val productInfo: LiveData<Product>
         get() = _productInfo
 
-    fun getProductDetail() {
+    fun getProductDetail(id: String) {
         _loaderState.value = true
         viewModelScope.launch {
-            when (val result = repository.getProductDetail()) {
+            when (val result = repository.getProductDetail(id)) {
                 is ResultWrapper.Success -> {
                     _loaderState.value = false
                     _productInfo.value = result.data

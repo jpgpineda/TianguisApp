@@ -36,7 +36,10 @@ class ProductDetailFragment : Fragment() {
     }
 
     fun setupView() {
-        viewModel.getProductDetail()
+        val productId = arguments?.let {
+            ProductDetailFragmentArgs.fromBundle(it).productId
+        }
+        viewModel.getProductDetail(productId ?: "")
         setupObservers()
     }
 

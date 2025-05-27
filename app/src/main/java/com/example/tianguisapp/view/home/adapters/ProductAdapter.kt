@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.tianguisapp.R
 import android.content.Context
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.example.tianguisapp.databinding.ProductItemBinding
 
 class ProductAdapter(
-    private val products: MutableList<Product>
+    private val products: MutableList<Product>,
+    private val onItemClick: (String) -> Unit
 ): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
     private lateinit var context: Context
 
@@ -22,6 +24,9 @@ class ProductAdapter(
             binding.productTitleTextView.text = product.title
             binding.productPriceTextView.text = product.price.toString()
             binding.productCategoryTextView.text = product.category
+            binding.itemContainerView.setOnClickListener {
+                onItemClick(product.id)
+            }
 
             Glide.with(itemView.context)
                 .load(product.image)

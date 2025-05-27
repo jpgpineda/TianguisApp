@@ -19,6 +19,7 @@ gson = "2.10.1"
 glideVersion = "4.15.1"
 location = "21.0.1"
 coroutines = "1.6.4"
+safeargs = "2.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,3 +47,5 @@ coroutines-play = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-services-plugin = { id = "com.google.gms.google-services", version.ref = "google-services" }
+safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "safeargs" }
+

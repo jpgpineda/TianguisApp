@@ -11,8 +11,8 @@ import retrofit2.HttpException
 class StoreRepository {
     private val retrofit = RetrofitInstance.getRetrofit().create(StoreAPI::class.java)
 
-    suspend fun getProductDetail(): ResultWrapper<Product> = safeCall {
-        val response = retrofit.getProductDetail()
+    suspend fun getProductDetail(id: String): ResultWrapper<Product> = safeCall {
+        val response = retrofit.getProductDetail(id)
         Log.i("RESPONSE", response.body().toString())
         if (response.isSuccessful) {
             response.body() ?: throw Exception("Datos nulos")

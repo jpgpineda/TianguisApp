@@ -3,26 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph2"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/productsFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/productsFragment"
         android:name="com.example.tianguisapp.view.home.ProductsFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/products_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_Second2Fragment"
-            app:destination="@id/Second2Fragment" />
+            android:id="@+id/action_productsFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/Second2Fragment"
+        android:id="@+id/productDetailFragment"
         android:name="com.example.tianguisapp.view.home.ProductDetailFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/product_detail_fragment">
 
+        <argument
+            android:name="productId"
+            app:argType="string"/>
+
         <action
             android:id="@+id/action_Second2Fragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/productsFragment" />
     </fragment>
 </navigation>
