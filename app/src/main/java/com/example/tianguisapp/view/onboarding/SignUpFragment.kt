@@ -9,10 +9,12 @@ import androidx.fragment.app.viewModels
 import com.example.tianguisapp.databinding.SignUpFragmentBinding
 import com.example.tianguisapp.utils.FragmentCommunicator
 import com.example.tianguisapp.viewModel.SignUpViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
 
     private var _binding: SignUpFragmentBinding? = null

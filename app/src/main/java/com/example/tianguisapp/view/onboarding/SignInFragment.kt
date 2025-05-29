@@ -22,11 +22,13 @@ import com.example.tianguisapp.databinding.SignInFragmentBinding
 import com.example.tianguisapp.viewModel.SignInViewModel
 import com.example.tianguisapp.utils.FragmentCommunicator
 import com.example.tianguisapp.view.home.HomeActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class SignInFragment : Fragment() {
 
     private var _binding: SignInFragmentBinding? = null

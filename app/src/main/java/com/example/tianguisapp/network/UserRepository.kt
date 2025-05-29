@@ -15,4 +15,9 @@ class UserRepository @Inject constructor(
         val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
         result.user ?: throw Exception("usuario no encontrado")
     }
+
+    suspend fun requestSignUp(email: String, password: String): ResultWrapper<FirebaseUser> = safeCall {
+        val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+        result.user ?: throw Exception("No se pudo crear el usuario")
+    }
 }

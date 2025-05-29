@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.google.services.plugin)
     alias(libs.plugins.safeargs)
     alias(libs.plugins.hilt)
-    id("kotlin-kapt")
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -74,5 +74,5 @@ dependencies {
 
     // Dagger hilt
     implementation(libs.hilt)
-    implementation(libs.hilt.compiler)
+    kapt(libs.hilt.compiler)
 }
