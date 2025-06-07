@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.tianguisapp.R
 import com.example.tianguisapp.databinding.SignUpFragmentBinding
 import com.example.tianguisapp.utils.FragmentCommunicator
 import com.example.tianguisapp.viewModel.SignUpViewModel
@@ -48,6 +50,10 @@ class SignUpFragment : Fragment() {
     private fun setupObservers() {
         viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->
             communicator.showLoader(loaderState)
+        }
+        viewModel.isUserCreated.observe(viewLifecycleOwner) { userId ->
+            val action = SignUpFragmentDirections.actionSignUpFragmentToPersonalInfoFragment(userId)
+            findNavController().navigate(action)
         }
     }
 

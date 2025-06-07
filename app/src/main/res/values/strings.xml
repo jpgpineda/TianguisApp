@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">TianguisApp</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="favorites_fragment">Favorites Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+    <string name="product_detail_fragment">Product Detail Fragment</string>
+    <string name="signup_fragment">Sign up Fragment</string>
     <string name="next">Next</string>
     <string name="email">Correo:</string>
     <string name="password">Contraseña:</string>
     <string name="name">Nombre:</string>
     <string name="bornDate">Fecha de nacimiento:</string>
+    <string name="userName">Nombre de usuario:</string>
     <string name="register">Registrarse</string>
     <string name="login">Ingresar</string>
     <string name="register_question">¿No tienes cuenta? Registrate</string>

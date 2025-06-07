@@ -8,11 +8,14 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.tianguisapp.view.onboarding.SignUpFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/signup_fragment"
         tools:layout="@layout/sign_up_fragment">
         <action
             android:id="@+id/action_SecondFragment_to_signInFragment2"
             app:destination="@id/signInFragment2" />
+        <action
+            android:id="@+id/action_SignUpFragment_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment2"
@@ -21,5 +24,16 @@
         <action
             android:id="@+id/action_signInFragment2_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.example.tianguisapp.view.onboarding.PersonalInfoFragment"
+        android:label="fragment_personal_info"
+        tools:layout="@layout/fragment_personal_info">
+
+        <argument
+            android:name="userId"
+            app:argType="string"/>
+
     </fragment>
 </navigation>

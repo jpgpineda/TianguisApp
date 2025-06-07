@@ -58,39 +58,6 @@
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameTil"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTil">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameTiet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/name" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/bornDateTil"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTil">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/bornDateTiet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/bornDate"
-            android:inputType="date"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
     <Button
         android:id="@+id/registerButton"
         android:layout_width="0dp"
@@ -99,6 +66,6 @@
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bornDateTil" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordTil" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

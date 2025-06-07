@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph2"
-    app:startDestination="@id/productsFragment">
+    app:startDestination="@id/navigation_home">
 
     <fragment
-        android:id="@+id/productsFragment"
+        android:id="@+id/navigation_home"
         android:name="com.example.tianguisapp.view.home.ProductsFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/home_fragment"
         tools:layout="@layout/products_fragment">
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.tianguisapp.view.home.ProductDetailFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/product_detail_fragment"
         tools:layout="@layout/product_detail_fragment">
 
         <argument
@@ -27,6 +27,16 @@
 
         <action
             android:id="@+id/action_Second2Fragment_to_FirstFragment"
-            app:destination="@id/productsFragment" />
+            app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.example.tianguisapp.view.home.FavoritesFragment"
+        android:label="@string/favorites_fragment"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.tianguisapp.view.home.ProfileFragment"
+        android:label="@string/profile_fragment"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
