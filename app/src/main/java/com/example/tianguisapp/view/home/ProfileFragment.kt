@@ -13,6 +13,8 @@ import com.example.tianguisapp.model.User
 import com.example.tianguisapp.utils.FragmentCommunicator
 import com.example.tianguisapp.view.home.viewModel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -20,6 +22,8 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var communicator: FragmentCommunicator
     private val viewModel by viewModels<ProfileViewModel>()
+    val locale = Locale("es", "MX")
+    val dateFormat = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", locale)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,9 +52,9 @@ class ProfileFragment : Fragment() {
 
     private fun updateUI(user: User) {
         binding?.apply {
-            userNameLabel.text = user.name + " " + user.lastName
+            userFullNameLabel.text = "${user.name} ${user.lastName}"
             userNameLabel.text = user.userName
-            userBornDateLabel.text = user.bornDate.toString()
+            userBornDateLabel.text = dateFormat.format(user.bornDate)
         }
     }
 
